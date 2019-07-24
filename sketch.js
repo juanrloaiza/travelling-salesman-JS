@@ -22,8 +22,7 @@ function setup() {
   button.parent('button');
   button.mousePressed(go);
 
-  var canvas = createCanvas(600, 500);
-  canvas.parent('main');
+
 }
 
 function updateCities() {
@@ -37,6 +36,9 @@ function go() {
   p.hide();
   button.hide();
 
+  var canvas = createCanvas(600, 500);
+  canvas.parent('main');
+
   for (let i = 0; i <= totalCities; i++) {
     newCity = createVector(random(20, width), random(100, height * 0.75));
     cities.push(newCity)
@@ -47,6 +49,8 @@ function go() {
     population.push(shuffle(order))
   }
 
+
+
   run = true;
 }
 
@@ -56,7 +60,7 @@ function draw() {
   translate(0, 30);
 
   if (run) {
-    text('Number of cities: ' + (totalCities + 1), 32, 0);
+    text('Number of cities: ' + (totalCities + 1), 0, 0);
     for (let i = 0; i < cities.length; i++) {
       circle(cities[i].x, cities[i].y, 10);
     }
@@ -70,7 +74,7 @@ function draw() {
       end = cities[bestOneP[i + 1]];
       line(start.x, start.y, end.x, end.y)
       pop();
-      text(calculateDistance(bestOneP), 32, 40);
+      text(calculateDistance(bestOneP), 0, 40);
     }
 
     if (calculateDistance(bestOneP) < recordDistance) {
@@ -83,7 +87,7 @@ function draw() {
       end = cities[recordPath[i + 1]];
       // translate(0, height / 2);
       line(start.x, start.y, end.x, end.y);
-      text('Current record: ' + recordDistance, 32, 20);
+      text('Current record: ' + recordDistance, 0, 20);
 
     }
 
